@@ -35,6 +35,8 @@
 
 Welcome to the Friendly MobX Console Formatter, a tool designed to enhance your debugging experience when working with MobX observable objects. Our project leverages Chrome DevTools Custom Object Formatters to provide an intuitive and readable representation of observables in your browser console.
 
+![image](https://github.com/zheeeng/friendly-mobx-console-formatter/assets/1303154/d6ffa6dd-0b8b-4abb-9cb3-944da23c01d2)
+
 ## Features
 
 This custom formatter is particularly valuable when working with MobX libraries, as MobX's observable objects can be complex and nested, making them challenging to interpret in their raw form. With Friendly MobX Console Formatter, you can:
