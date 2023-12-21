@@ -1,4 +1,4 @@
-import { createDevtoolsFormatter, type DevtoolsFormatter } from './formatter'
+import { createDevtoolsFormatter, type DevtoolsFormatter, type MobxStub } from './formatter'
 
 declare global {
   interface Window {
@@ -12,7 +12,7 @@ export const defaultFormatterStyles = {
   array: 'color: brown;',
   set: 'color: lightblue;',
   map: 'color: orange;',
-  prototype: 'opacity: 0.5;',
+  prototype: 'opacity: 0.4;',
   symbol: 'color: orange;',
   complexValue: 'margin-top: 0.25em; padding-left: 1em; border-left: dashed 1px;',
   observable: 'user-select: none; background: #28a745; color: white; padding: 0.25em; margin-right: 0.4em; border-radius: 0.2em; font-weight: light; font-size: 0.75em; line-height: 1em',
@@ -31,7 +31,7 @@ function callIfThunk<T>(value: T | (() => T)): T {
   return typeof value === 'function' ? (value as () => T)() : value
 }
 
-export function register (mobx: typeof import('mobx'), options: RegisterDevtoolsFormatterOptions = {}) {
+export function register (mobx: MobxStub, options: RegisterDevtoolsFormatterOptions = {}) {
   if (typeof window === 'undefined') {
     throw new Error('registerDevtoolsFormatter can only be called in browser environment')
   }

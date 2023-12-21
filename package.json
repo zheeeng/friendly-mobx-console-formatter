@@ -1,8 +1,8 @@
 {
   "author": "Zheeeng <hi@zheeeng.me>",
-  "private": false,
+  "description": "Friendly MobX Console Formatter",
   "scripts": {
-    "dev": "npm-run-all --parallel dev:*",
+    "dev": "pnpm build && npm-run-all --parallel dev:*",
     "dev:lib": "pnpm --filter friendly-mobx-console-formatter dev",
     "dev:playground": "pnpm --filter friendly-mobx-console-formatter-playground dev",
     "build": "pnpm build:lib",

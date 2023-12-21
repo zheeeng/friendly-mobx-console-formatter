@@ -5,6 +5,8 @@ type ObservableMap = Map<string | number | symbol, unknown>
 type Observable = ObservableObject | ObservableArray | ObservableSet | ObservableMap
 type PrintElement = 'div' | 'span' | 'ol' | 'li' | 'table' | 'tr' | 'td'
 
+export type MobxStub = Pick<typeof import('mobx'), 'isObservableObject' | 'isObservableArray' | 'isObservableSet' | 'isObservableMap' | 'isObservableProp' | 'isComputedProp' | 'isAction'>
+
 type PrintableObject = readonly [
   'object',
   {
@@ -43,7 +45,7 @@ export type CreateDevtoolsFormatterOptions = {
   config: FormatterConfig,
 }
 
-export function createDevtoolsFormatter(mobx: typeof import('mobx'), { config }: CreateDevtoolsFormatterOptions): {
+export function createDevtoolsFormatter(mobx: MobxStub, { config }: CreateDevtoolsFormatterOptions): {
   ObservableObjectFormatter: DevtoolsFormatter<unknown>,
   ObservableArrayFormatter: DevtoolsFormatter<unknown>,
   ObservableSetFormatter: DevtoolsFormatter<unknown>,

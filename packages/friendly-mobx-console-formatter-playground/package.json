@@ -1,6 +1,8 @@
 {
   "name": "friendly-mobx-console-formatter-playground",
   "private": true,
+  "author": "Zheeeng <hi@zheeeng.me>",
+  "description": "Friendly MobX Console Formatter playground",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

@@ -164,7 +164,7 @@ const defaultFormatterStyles = {
   array: 'color: brown;',
   set: 'color: lightblue;',
   map: 'color: orange;',
-  prototype: 'opacity: 0.5;',
+  prototype: 'opacity: 0.4;',
   symbol: 'color: orange;',
   complexValue: 'margin-top: 0.25em; padding-left: 1em; border-left: dashed 1px;',
   observable: 'user-select: none; background: #28a745; color: white; padding: 0.25em; margin-right: 0.4em; border-radius: 0.2em; font-weight: light; font-size: 0.75em; line-height: 1em',

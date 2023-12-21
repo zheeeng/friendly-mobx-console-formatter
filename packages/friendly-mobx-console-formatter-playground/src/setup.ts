@@ -5,30 +5,36 @@ const hasDescSymbol = Symbol('foo')
 
 class Store {
   // Observable properties
-  stringValue = 'Hello World' // String
-  numberValue = 42 // Number
-  booleanValue = true // Boolean
-  objectValue = { key: 'value' } // Object
-  arrayValue = [1, 2, 3] // Array
-  mapValue = new Map([['22', '333']]) // Map
-  setValue = new Set([1, 2, 3, mobx.observable({ aa: 333, b: mobx.observable({ ttt: 555 }) })]) // Set (注意 Set 不是响应式的)
-
+  stringValue = 'Hello World'
+  numberValue = 42
+  booleanValue = true
+  objectValue = { key: 'value' }
+  arrayValue = [1, 2, 3]
+  mapValue = new Map([['22', '333']])
+  setValue = new Set([1, 2, 3, mobx.observable({ aa: 333, b: mobx.observable({ ttt: 555 }) })])
+  dateValue = new Date() // 日期
   // Non-observable property
-  nonObservable = 'I do not react';
-  [noDescSymbol] = 'I am a symbol';
-  [hasDescSymbol] = 'I am a symbol with a description'
+  nonObservable = 'I do not react'
+  ;[noDescSymbol] = 'I am a symbol'
+  ;[hasDescSymbol] = 'I am a symbol with a description'
 
-  // Computed property
+  // Computed properties
   get reversedString () {
-    // This is a computed value that will be derived from the observable `stringValue`
     return this.stringValue.split('').reverse().join('')
   }
+  get arrayLength () {
+    return this.arrayValue.length
+  }
+  // Observable reference
+  anotherObject = mobx.observable({ nested: 'Nested Value' })
 
   constructor () {
     mobx.makeAutoObservable(this, {
-      nonObservable: false, // Exclude `nonObservable` from being made observable
-      reversedString: mobx.computed, // Include `reversedString` as a computed value
+      nonObservable: false,
+      reversedString: mobx.computed,
       updateNonObservable: false,
+      // Explicitly define `anotherObject` as a shallow observable reference
+      anotherObject: mobx.observable.shallow,
     })
   }
 
@@ -36,30 +42,40 @@ class Store {
   updateStringValue (newValue: string) {
     this.stringValue = newValue
   }
-
   // Action method to modify non-observable
   updateNonObservable (newValue: string) {
     this.nonObservable = newValue
   }
+  // Action method to modify observable reference
+  updateAnotherObject (newValue: string) {
+    this.anotherObject.nested = newValue
+  }
 }
-
 const myStore = new Store()
 
-const myStore2 = mobx.observable([
+const raw = [
   1, 2, 4,
   {
     foo: 'bar',
     set: new Set([111]),
     map: new Map([[111, 3333]]),
+    date: new Date(),
+    observableObject: mobx.observable({ nested: 'Nested Value' }),
     [noDescSymbol]: 'I am a symbol',
     [hasDescSymbol]: 'I am a symbol with a description',
+    // Computed properties within the observable object
+    get stringLength () {
+      return this.foo.length
+    }
   }
-])
+]
+
+const myStore2 = mobx.observable(raw)
 
 export const setupConsoleLog = (element: HTMLElement) => {
   element.addEventListener('click', () => {
-    console.log('mobx observable', myStore)
-    console.log('mobx observable 2', myStore2)
+    console.log('myStore\n', myStore)
+    console.log('myStore2\n', myStore2)
   })
 }
 
