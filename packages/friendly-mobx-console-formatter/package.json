@@ -1,0 +1,47 @@
+{
+  "name": "friendly-mobx-console-formatter",
+  "version": "0.0.1",
+  "author": "Zheeeng <hi@zheeeng.me>",
+  "description": "Friendly MobX Console Formatter",
+  "keywords": [
+    "mobx",
+    "mobx formatter",
+    "console formatter",
+    "debugger formatter",
+    "custom formatter",
+    "chrome",
+    "firefox",
+    "edge"
+  ],
+  "repository": "zheeeng/friendly-mobx-console-formatter",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.mjs"
+    },
+    "./README.md": "./README.md",
+    "./package.json": "./package.json",
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "pnpm build --watch",
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "build:min": "pnpm build --minify terser"
+  },
+  "devDependencies": {
+    "mobx": "^6.12.0",
+    "terser": "^5.26.0",
+    "tsup": "^8.0.1"
+  },
+  "peerDependencies": {
+    "mobx": "^4.0.0"
+  }
+}

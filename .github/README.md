@@ -1,0 +1,1 @@
+../packages/friendly-mobx-console-formatter/README.md
