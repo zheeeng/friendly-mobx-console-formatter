@@ -1,11 +1,22 @@
-type ObservableObject = Record<string | number | symbol, unknown>
+type PropertyKey = string | number | symbol
+type ObservableObject = Record<PropertyKey, unknown>
 type ObservableArray = unknown[]
 type ObservableSet = Set<unknown>
-type ObservableMap = Map<string | number | symbol, unknown>
+type ObservableMap = Map<PropertyKey, unknown>
 type Observable = ObservableObject | ObservableArray | ObservableSet | ObservableMap
 type PrintElement = 'div' | 'span' | 'ol' | 'li' | 'table' | 'tr' | 'td'
 
-export type MobxStub = Pick<typeof import('mobx'), 'isObservableObject' | 'isObservableArray' | 'isObservableSet' | 'isObservableMap' | 'isObservableProp' | 'isComputedProp' | 'isAction'>
+export type MobxStub = {
+  isObservableObject: (value: unknown) => boolean
+  isObservableArray: (value: unknown) => boolean
+  isObservableSet: (value: unknown) => boolean
+  isObservableMap: (value: unknown) => boolean
+  isObservable: (value: unknown) => boolean
+  isObservableProp: (value: unknown, property: PropertyKey) => boolean
+  isComputed: (value: unknown) => boolean
+  isComputedProp: (value: unknown, property: PropertyKey) => boolean
+  isAction: (value: unknown) => boolean
+}
 
 type PrintableObject = readonly [
   'object',
