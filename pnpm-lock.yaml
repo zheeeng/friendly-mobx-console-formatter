@@ -36,8 +36,8 @@ importers:
   packages/friendly-mobx-console-formatter:
     dependencies:
       mobx:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.0.0 || ^5.0.0 || ^6.0.0
+        version: 6.12.0
     devDependencies:
       terser:
         specifier: ^5.26.0
@@ -1693,10 +1693,6 @@ packages:
     dependencies:
       brace-expansion: 1.1.11
     dev: true
-
-  /mobx@4.0.0:
-    resolution: {integrity: sha512-t+7VzQfN7BWn65sTeNCdptN+MGGtXaeK52zd2jSlqgxi8EoSfJkxbuBuZ7xMS2CWgMxq5t3KcL5DK4P3TeaAfQ==}
-    dev: false
 
   /mobx@6.12.0:
     resolution: {integrity: sha512-Mn6CN6meXEnMa0a5u6a5+RKrqRedHBhZGd15AWLk9O6uFY4KYHzImdt8JI8WODo1bjTSRnwXhJox+FCUZhCKCQ==}
